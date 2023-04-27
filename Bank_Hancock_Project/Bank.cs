@@ -3,7 +3,6 @@
     internal class Bank
     {
         private decimal _balance;
-
         public Bank(decimal Change)
         {
             Balance = Change;

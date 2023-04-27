@@ -15,7 +15,6 @@
                 {
                     Menu();
                 }
-
                 if (MenuSelection == "1" || MenuSelection == "2")
                 {
                     Message(MenuSelection);
