@@ -42,14 +42,5 @@
             }
             balance += MoneyOut;
         }
-
-        public string FormatBalance
-        {
-            get
-            {
-                string FormatBalance = balance.ToString("C");
-                return FormatBalance;
-            }
-        }
     }
 }

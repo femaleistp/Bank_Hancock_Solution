@@ -7,32 +7,35 @@
             string MenuSelection = string.Empty;
             Bank bank = new Bank(1000m);
 
-            for(; ;)
+            do
             {
                 Menu();
-                MenuSelection = Console.ReadLine();
-                Message(MenuSelection);
-            }
+
+                if (MenuSelection == "1" || MenuSelection == "2")
+                {
+                    Message(MenuSelection);
+                }
+            } while (MenuSelection != "3");
 
             void Menu()
             {
-                if (bank.Balance == 0)
+                do
                 {
-                    Console.WriteLine("To deposit press 1, ENTER\nTo exit press 3, ENTER");
-                }
-                else
-                {
-                    Console.WriteLine("To deposit press 1, ENTER\nTo withdrawal press 2, ENTER\nTo exit press 3, ENTER");
-                }
+                    if (bank.Balance == 0)
+                    {
+                        Console.WriteLine("To deposit press 1, ENTER\nTo exit press 3, ENTER");
+                    }
+                    else
+                    {
+                        Console.WriteLine("To deposit press 1, ENTER\nTo withdrawal press 2, ENTER\nTo exit press 3, ENTER");
+                    }
+                    MenuSelection = Console.ReadLine();
+
+                } while (MenuSelection != "1" &&  MenuSelection != "2" && MenuSelection != "3");
             }
 
             void Message(string option)
             {
-                if (option == "3")
-                {
-                    Environment.Exit(0);
-                }
-
                 Console.Write("Enter amount:  ");
                 decimal change = Decimal.Parse(Console.ReadLine());
 
@@ -55,9 +58,15 @@
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
                 }
-                Console.WriteLine(bank.FormatBalance);
+                Console.WriteLine(BalanceFormatter);
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine();
+            }
+
+            string BalanceFormatter()
+            {
+                string FormattedBalance = bank.Balance.ToString("C");
+                return FormattedBalance;
             }
         }
     }
