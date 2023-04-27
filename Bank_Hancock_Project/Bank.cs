@@ -2,7 +2,7 @@
 {
     internal class Bank
     {
-        private decimal balance;
+        private decimal _balance;
 
         public Bank(decimal Change)
         {
@@ -13,34 +13,32 @@
         {
             get
             {
-                return balance;
+                return _balance;
             }
             set
             {
-                if (value < 0)
-                {
-                    balance = 0;  
-                }
-                else
-                {
-                    balance = value;
-                }
+                    _balance = value;    
             }
         }
 
-        public void Deposit(decimal MoneyIn)
+        public decimal Deposit(decimal MoneyIn)
         {
-            balance += MoneyIn;
+            return _balance += MoneyIn;
         }
 
-        public void Withdrawal(decimal MoneyOut)
+        public decimal Withdrawal(decimal MoneyOut)
         {
             MoneyOut *= -1m;
             if (MoneyOut < -500m)
             {
                 MoneyOut = -500m;
             }
-            balance += MoneyOut;
+            _balance += MoneyOut;
+            if (_balance < 0)
+            {
+                _balance = 0;
+            }
+            return _balance;
         }
     }
 }

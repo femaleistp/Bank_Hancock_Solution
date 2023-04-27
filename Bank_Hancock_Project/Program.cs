@@ -9,7 +9,12 @@
 
             do
             {
+                Console.ForegroundColor = ConsoleColor.White;
                 Menu();
+                while (MenuSelection == "2" && bank.Balance == 0)
+                {
+                    Menu();
+                }
 
                 if (MenuSelection == "1" || MenuSelection == "2")
                 {
@@ -31,7 +36,7 @@
                     }
                     MenuSelection = Console.ReadLine();
 
-                } while (MenuSelection != "1" &&  MenuSelection != "2" && MenuSelection != "3");
+                } while (MenuSelection != "1" && MenuSelection != "2" && MenuSelection != "3");
             }
 
             void Message(string option)
@@ -41,12 +46,12 @@
 
                 if (option == "1")
                 {
-                    bank.Deposit(change);
+                    change = bank.Deposit(change);
                 }
 
                 else if (option == "2")
                 {
-                    bank.Withdrawal(change);
+                    change = bank.Withdrawal(change);
                 }
 
                 Console.Write("Balance:  ");
@@ -58,15 +63,8 @@
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
                 }
-                Console.WriteLine(BalanceFormatter);
-                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine(change.ToString("C"));
                 Console.WriteLine();
-            }
-
-            string BalanceFormatter()
-            {
-                string FormattedBalance = bank.Balance.ToString("C");
-                return FormattedBalance;
             }
         }
     }
