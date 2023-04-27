@@ -45,12 +45,12 @@
 
                 if (option == "1")
                 {
-                    change = bank.Deposit(change);
+                    bank.Deposit(change);
                 }
 
                 else if (option == "2")
                 {
-                    change = bank.Withdrawal(change);
+                    bank.Withdrawal(change);
                 }
 
                 Console.Write("Balance:  ");
@@ -62,7 +62,7 @@
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
                 }
-                Console.WriteLine(change.ToString("C"));
+                Console.WriteLine(bank.Balance.ToString("C"));
                 Console.WriteLine();
             }
         }

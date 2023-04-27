@@ -12,20 +12,34 @@
         {
             get
             {
-                return _balance;
+                if (_balance > 0)
+                {
+                    return _balance;
+                }
+                else
+                {
+                    return 0;
+                }
             }
             set
             {
-                    _balance = value;    
+                if (value > 0)
+                {
+                    _balance = value;
+                }
+                else
+                {
+                    _balance = 0;
+                }
             }
         }
 
-        public decimal Deposit(decimal MoneyIn)
+        public void Deposit(decimal MoneyIn)
         {
-            return _balance += MoneyIn;
+            _balance += MoneyIn;
         }
 
-        public decimal Withdrawal(decimal MoneyOut)
+        public void Withdrawal(decimal MoneyOut)
         {
             MoneyOut *= -1m;
             if (MoneyOut < -500m)
@@ -33,11 +47,6 @@
                 MoneyOut = -500m;
             }
             _balance += MoneyOut;
-            if (_balance < 0)
-            {
-                _balance = 0;
-            }
-            return _balance;
         }
     }
 }
