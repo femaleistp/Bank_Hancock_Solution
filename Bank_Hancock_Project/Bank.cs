@@ -12,14 +12,11 @@
         {
             get
             {
-                if (_balance > 0)
+                if (_balance < 0)
                 {
-                    return _balance;
+                    _balance = 0;
                 }
-                else
-                {
-                    return 0;
-                }
+                return _balance;
             }
             set
             {
